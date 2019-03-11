@@ -1,30 +1,28 @@
-
-#include <iostream>
+#include <bits/stdc++.h>
 #include <vector>
-
 using namespace std;
 
-void print_vector(vector<int> v)
+void print_vector(vector<int> &vec)
 {
-    for (auto it = v.begin(); it < v.end() - 1; it++)
+    for (auto &&it = vec.begin(); it < vec.end() - 1; it++)
     {
         cout << *it << " ";
     }
-    cout << *(v.end() - 1) << endl;
+    cout << *(vec.end() - 1) << endl;
 }
 
-void bubble_sort(vector<int> vec, int n)
+void bubble_sort(vector<int> &vec, const int n)
 {
-    int buf, count = 0;
+    int count = 0;
     bool flag = true;
     while (flag)
     {
         flag = false;
-        for (int i = n - 1; i >= 0; i--)
+        for (int i = n - 1; i > 0; i--)
         {
-            if (vec[i - 1] > vec[i])
+            if (vec.at(i - 1) > vec.at(i))
             {
-                swap(vec[i - 1], vec[i]);
+                swap(vec.at(i - 1), vec.at(i));
                 count += 1;
                 flag = true;
             }
@@ -36,8 +34,8 @@ void bubble_sort(vector<int> vec, int n)
 
 int main()
 {
-    int n = 1;
-    while (true)
+    int n = 0;
+    while (1)
     {
         {
             cin >> n;
@@ -45,13 +43,13 @@ int main()
             {
                 return 0;
             }
-            vector<int> v(n);
+            vector<int> vec(n);
             for (int i = 0; i < n; i++)
             {
-                cin >> v[i];
+                cin >> vec[i];
             }
-            bubble_sort(v, n);
-            vector<int>().swap(v);
+            bubble_sort(vec, n);
+            vector<int>().swap(vec);
         }
     }
 }
